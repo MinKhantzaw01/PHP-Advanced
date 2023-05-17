@@ -15,7 +15,7 @@ class Mail
 
     public function setUp()
     {
-        if(getenv("APP_LOCAL")=="local")
+        if(getenv("APP_ENV")==="local")
         {
         $this->mail->SMTPDebug=2;
         }
@@ -34,13 +34,12 @@ class Mail
 
     }
 
-    public function send()
+    public function send($data)
     {
-        $body="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde dolorum autem atque, officiis in eligendi qui aperiam possimus necessitatibus blanditiis molestiae illo sit? Nemo sunt, voluptatum officiis repellendus id explicabo?";
-
-        $this->mail->addAddress("minmin1.mm347@gmail.com","min min");
-        $this->mail->Subject= "New Mail Testing For E-commerce Project";
-        $this->mail->Body=$body;
+        
+        $this->mail->addAddress($data["to"],$data["to_name"]);
+        $this->mail->Subject= $data["subject"];
+        $this->mail->Body=make($data["filename"],$data);
         
         return $this->mail->send();
 
