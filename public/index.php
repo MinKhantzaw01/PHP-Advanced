@@ -2,12 +2,9 @@
 
 // use App\Classes\Mail;
 
+
+
 require_once "../bootstrap/init.php";
-
-
-
-
-
 
 
 

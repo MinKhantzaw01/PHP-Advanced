@@ -1,8 +1,7 @@
 <?php
 namespace App\Controllers;
 
-
-
+use App\Classes\Request;
 
 class CategoryController extends BaseController
 {
@@ -13,7 +12,7 @@ class CategoryController extends BaseController
 
     public function store()
     {
-        beautify($_POST);
+        beautify(Request::all());
     }
 }
 
